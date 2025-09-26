@@ -1,54 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Estudio Mendola, Eiguren & Asociados</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Mendola, Eiguren & Asociados</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>ESTUDIO MENDOLA, EIGUREN & ASOCIADOS</h1>
-    <p>Contabilidad, asesoramiento fiscal y financiero de vanguardia</p>
-    <a href="#contact" class="btn">Contactanos</a>
-  </header>
 
-  <section id="services">
-    <h2>Nuestros Servicios</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Declaraciones de impuestos</h3>
-        <p>Gestión completa de impuestos para empresas y particulares.</p>
-      </div>
-      <div class="card">
-        <h3>Contabilidad de empresas</h3>
-        <p>Organización y control financiero para PYMES y grandes empresas.</p>
-      </div>
-      <div class="card">
-        <h3>Asesoramiento financiero</h3>
-        <p>Estrategias y planificación para maximizar tu rentabilidad.</p>
-      </div>
-      <div class="card">
-        <h3>Sueldos y cargas sociales</h3>
-        <p>Gestión de nóminas y obligaciones legales sin complicaciones.</p>
-      </div>
+    <div class="container">
+
+        <header>
+            <h1>ESTUDIO MENDOLA, EIGUREN & ASOCIADOS</h1>
+            <p>Contabilidad, asesoramiento fiscal y financiero de vanguardia</p>
+            <a href="#contact">Contactanos</a>
+        </header>
+
+        <main>
+            <section class="card">
+                <h2>Nuestros Servicios</h2>
+                
+                <div class="service-item">
+                    <h3>Declaraciones de impuestos</h3>
+                    <p>Gestión completa de impuestos para empresas y particulares.</p>
+                </div>
+
+                <div class="service-item">
+                    <h3>Contabilidad de empresas</h3>
+                    <p>Organización y control financiero para PYMES y grandes empresas.</p>
+                </div>
+
+                <div class="service-item">
+                    <h3>Asesoramiento financiero</h3>
+                    <p>Estrategias y planificación para maximizar tu rentabilidad.</p>
+                </div>
+
+                <div class="service-item">
+                    <h3>Sueldos y cargas sociales</h3>
+                    <p>Gestión de nóminas y obligaciones legales sin complicaciones.</p>
+                </div>
+            </section>
+
+            <section id="contact" class="card">
+                <h2>Contacto</h2>
+                <p><strong>Email:</strong> contacto@estudiomendola.com</p>
+                <p><strong>Teléfono:</strong> +54 9 11 1234-5678</p>
+                
+                <form action="mailto:contacto@estudiomendola.com" method="post" enctype="text/plain">
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu email" required>
+                    <textarea name="mensaje" placeholder="Escribí tu mensaje" rows="5" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 ESTUDIO MENDOLA, EIGUREN & ASOCIADOS</p>
+        </footer>
+
     </div>
-  </section>
 
-  <section id="contact">
-    <h2>Contacto</h2>
-    <p>Email: contacto@estudiomendola.com</p>
-    <p>Teléfono: +54 9 11 1234-5678</p>
-    <form action="mailto:contacto@estudiomendola.com" method="post" enctype="text/plain">
-      <input type="text" name="Nombre" placeholder="Tu nombre" required>
-      <input type="email" name="Email" placeholder="Tu email" required>
-      <textarea name="Mensaje" placeholder="Escribí tu mensaje" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 ESTUDIO MENDOLA, EIGUREN & ASOCIADOS</p>
-  </footer>
 </body>
 </html>
