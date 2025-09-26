@@ -4,32 +4,45 @@
   <meta charset="UTF-8">
   <title>Estudio Mendola, Eiguren & Asociados</title>
   <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <header>
     <h1>ESTUDIO MENDOLA, EIGUREN & ASOCIADOS</h1>
-    <p>Servicios contables, asesoramiento fiscal y financiero</p>
+    <p>Contabilidad, asesoramiento fiscal y financiero de vanguardia</p>
+    <a href="#contact" class="btn">Contactanos</a>
   </header>
 
-  <section>
-    <h2>Servicios</h2>
-    <ul>
-      <li>Declaraciones de impuestos</li>
-      <li>Contabilidad para empresas y PYMES</li>
-      <li>Asesoramiento financiero estratégico</li>
-      <li>Gestión de sueldos y cargas sociales</li>
-      <li>Auditorías y balances</li>
-    </ul>
+  <section id="services">
+    <h2>Nuestros Servicios</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Declaraciones de impuestos</h3>
+        <p>Gestión completa de impuestos para empresas y particulares.</p>
+      </div>
+      <div class="card">
+        <h3>Contabilidad de empresas</h3>
+        <p>Organización y control financiero para PYMES y grandes empresas.</p>
+      </div>
+      <div class="card">
+        <h3>Asesoramiento financiero</h3>
+        <p>Estrategias y planificación para maximizar tu rentabilidad.</p>
+      </div>
+      <div class="card">
+        <h3>Sueldos y cargas sociales</h3>
+        <p>Gestión de nóminas y obligaciones legales sin complicaciones.</p>
+      </div>
+    </div>
   </section>
 
-  <section>
+  <section id="contact">
     <h2>Contacto</h2>
     <p>Email: contacto@estudiomendola.com</p>
     <p>Teléfono: +54 9 11 1234-5678</p>
     <form action="mailto:contacto@estudiomendola.com" method="post" enctype="text/plain">
-      <input type="text" name="Nombre" placeholder="Tu nombre" required><br>
-      <input type="email" name="Email" placeholder="Tu email" required><br>
-      <textarea name="Mensaje" placeholder="Escribí tu mensaje" required></textarea><br>
+      <input type="text" name="Nombre" placeholder="Tu nombre" required>
+      <input type="email" name="Email" placeholder="Tu email" required>
+      <textarea name="Mensaje" placeholder="Escribí tu mensaje" required></textarea>
       <button type="submit">Enviar</button>
     </form>
   </section>
