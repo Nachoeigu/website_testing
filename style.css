@@ -1,130 +1,215 @@
-/* --- Estilos Generales --- */
-body {
+/* --- VARIABLES DE COLOR Y ESTILOS GLOBALES --- */
+:root {
+    --primary-color: #1a2b48; /* Azul oscuro corporativo */
+    --secondary-color: #4a5568; /* Gris para texto */
+    --accent-color: #3498db; /* Azul brillante para botones y links */
+    --background-light: #f8f9fa;
+    --white-color: #ffffff;
+}
+
+* {
     margin: 0;
-    font-family: 'Lato', sans-serif;
-    background-color: #f8f9fa; /* Un gris muy claro, como en la imagen */
-    color: #343a40; /* Un gris oscuro para el texto */
-    line-height: 1.6;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.7;
+    color: var(--secondary-color);
 }
 
 .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- BARRA DE NAVEGACIÓN --- */
+.navbar {
+    background-color: var(--white-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* --- SECCIÓN HERO --- */
+.hero {
+    height: 85vh;
+    background: linear-gradient(rgba(26, 43, 72, 0.8), rgba(26, 43, 72, 0.8)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1911&auto=format&fit=crop') no-repeat center center/cover;
+    /* ¡Puedes cambiar la URL de la imagen por una tuya! */
+    color: var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none; /* Para que funcione en el form button también */
+    cursor: pointer; /* Para el form button */
+    font-size: 1em; /* Para el form button */
+}
+
+.cta-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+}
+
+/* --- ESTILOS DE SECCIONES GENERALES --- */
+.services-section, .about-section, .contact-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.services-section h2, .about-section h2, .contact-section h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+/* --- SECCIÓN DE SERVICIOS (GRID) --- */
+.services-section {
+    background-color: var(--background-light);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.service-card {
+    background-color: var(--white-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.service-card .icon {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* --- SECCIÓN "NOSOTROS" --- */
+.about-intro {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-}
-
-/* --- Header --- */
-header {
-    text-align: center;
-    padding: 40px 0;
-}
-
-header h1 {
-    margin: 0;
-    color: #2c3e50; /* Azul oscuro/corporativo */
-    font-size: 2.2em;
-    font-weight: 700;
-}
-
-header p {
-    margin: 10px 0 20px 0;
     font-size: 1.1em;
-    color: #495057;
 }
 
-header a {
-    color: #3498db; /* Azul para el link */
-    text-decoration: underline;
-    font-weight: bold;
+/* --- SECCIÓN DE CONTACTO --- */
+.contact-section {
+    background-color: var(--background-light);
 }
 
-/* --- Tarjetas de Contenido (Servicios y Contacto) --- */
-.card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+.contact-section form {
+    max-width: 600px;
+    margin: 20px auto 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.card h2 {
-    margin-top: 0;
-    margin-bottom: 25px;
-    color: #2c3e50;
-}
-
-/* --- Sección de Servicios --- */
-.service-item {
-    margin-bottom: 20px;
-}
-
-.service-item:last-child {
-    margin-bottom: 0;
-}
-
-.service-item h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.2em;
-    color: #343a40;
-}
-
-.service-item p {
-    margin: 0;
-    color: #6c757d; /* Gris más claro para descripciones */
-}
-
-/* --- Sección de Contacto y Formulario --- */
-#contact p {
-    margin: 0 0 15px 0;
-}
-
-form {
-    margin-top: 20px;
-}
-
-form input,
-form textarea {
+.contact-section input, .contact-section textarea {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     margin-bottom: 15px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    font-family: 'Lato', sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1em;
-    box-sizing: border-box; /* Evita que el padding afecte el ancho */
 }
 
-form button {
-    width: auto;
-    padding: 12px 25px;
-    background-color: #2c3e50; /* Mismo azul del título */
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #34495e; /* Un poco más claro al pasar el mouse */
-}
-
-/* --- Footer --- */
-footer {
+/* --- FOOTER --- */
+.footer {
+    background-color: var(--primary-color);
+    color: #a0aec0; /* Un gris claro para el texto del footer */
     text-align: center;
-    padding: 20px 0;
-    color: #6c757d;
-    font-size: 0.9em;
+    padding: 25px 0;
 }
 
-/* --- Adaptación para Móviles --- */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 1.8em;
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2em;
     }
-    .card {
-        padding: 20px;
+    .nav-links {
+        display: none; /* En un proyecto real, aquí iría un menú hamburguesa */
+    }
+    .services-section h2, .about-section h2, .contact-section h2 {
+        font-size: 2em;
     }
 }
