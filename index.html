@@ -3,66 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Mendola, Eiguren & Asociados</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Estudio Mendola, Eiguren & Asociados - Asesoramiento Contable</title>
+    
+    <!-- Google Fonts: Montserrat para un look moderno -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
+    <!-- NAVEGACIÓN FIJA -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">ESTUDIO MENDOLA, EIGUREN & ASOC.</a>
+            <ul class="nav-links">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <header>
-            <h1>ESTUDIO MENDOLA, EIGUREN & ASOCIADOS</h1>
-            <p>Contabilidad, asesoramiento fiscal y financiero de vanguardia</p>
-            <a href="#contact">Contactanos</a>
-        </header>
+    <!-- SECCIÓN HERO (PRINCIPAL) -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Asesoramiento Contable, Fiscal y Financiero Integral</h1>
+            <p>Potenciamos el crecimiento de su empresa con soluciones a medida.</p>
+            <a href="#contacto" class="cta-button">Solicitar Asesoramiento</a>
+        </div>
+    </header>
 
-        <main>
-            <section class="card">
-                <h2>Nuestros Servicios</h2>
-                
-                <div class="service-item">
-                    <h3>Declaraciones de impuestos</h3>
-                    <p>Gestión completa de impuestos para empresas y particulares.</p>
+    <main>
+        <!-- SECCIÓN DE SERVICIOS -->
+        <section id="servicios" class="services-section">
+            <div class="container">
+                <h2>Nuestros Servicios Profesionales</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon">[ICONO]</div>
+                        <h3>Declaraciones de Impuestos</h3>
+                        <p>Gestión y presentación de declaraciones juradas para empresas y particulares, optimizando su carga fiscal.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">[ICONO]</div>
+                        <h3>Contabilidad de Empresas</h3>
+                        <p>Organización, control y análisis financiero para PYMES y grandes empresas, asegurando información precisa.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">[ICONO]</div>
+                        <h3>Asesoramiento Financiero</h3>
+                        <p>Estrategias y planificación personalizadas para maximizar la rentabilidad y la salud financiera de su negocio.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">[ICONO]</div>
+                        <h3>Sueldos y Cargas Sociales</h3>
+                        <p>Administración integral de nóminas y cumplimiento de obligaciones legales laborales sin complicaciones.</p>
+                    </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="service-item">
-                    <h3>Contabilidad de empresas</h3>
-                    <p>Organización y control financiero para PYMES y grandes empresas.</p>
-                </div>
+        <!-- SECCIÓN "POR QUÉ ELEGIRNOS" (NOSOTROS) -->
+        <section id="nosotros" class="about-section">
+            <div class="container">
+                <h2>Por Qué Confiar en Nosotros</h2>
+                <p class="about-intro">
+                    Con más de 20 años de experiencia, nuestro estudio se compromete a brindar un servicio de vanguardia, combinando conocimiento técnico con un trato cercano y personalizado. Entendemos los desafíos de su negocio y trabajamos como un socio estratégico para alcanzar sus metas.
+                </p>
+            </div>
+        </section>
 
-                <div class="service-item">
-                    <h3>Asesoramiento financiero</h3>
-                    <p>Estrategias y planificación para maximizar tu rentabilidad.</p>
-                </div>
-
-                <div class="service-item">
-                    <h3>Sueldos y cargas sociales</h3>
-                    <p>Gestión de nóminas y obligaciones legales sin complicaciones.</p>
-                </div>
-            </section>
-
-            <section id="contact" class="card">
+        <!-- SECCIÓN DE CONTACTO -->
+        <section id="contacto" class="contact-section">
+            <div class="container">
                 <h2>Contacto</h2>
-                <p><strong>Email:</strong> contacto@estudiomendola.com</p>
-                <p><strong>Teléfono:</strong> +54 9 11 1234-5678</p>
-                
+                <p>¿Listo para empezar? Envíenos su consulta y nos pondremos en contacto a la brevedad.</p>
                 <form action="mailto:contacto@estudiomendola.com" method="post" enctype="text/plain">
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
-                    <input type="email" name="email" placeholder="Tu email" required>
-                    <textarea name="mensaje" placeholder="Escribí tu mensaje" rows="5" required></textarea>
-                    <button type="submit">Enviar</button>
+                    <input type="text" name="nombre" placeholder="Su Nombre Completo" required>
+                    <input type="email" name="email" placeholder="Su Email" required>
+                    <textarea name="mensaje" placeholder="Escriba su consulta aquí..." rows="6" required></textarea>
+                    <button type="submit" class="cta-button">Enviar Mensaje</button>
                 </form>
-            </section>
-        </main>
+            </div>
+        </section>
+    </main>
 
-        <footer>
-            <p>&copy; 2025 ESTUDIO MENDOLA, EIGUREN & ASOCIADOS</p>
-        </footer>
-
-    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 ESTUDIO MENDOLA, EIGUREN & ASOCIADOS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
