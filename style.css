@@ -1,11 +1,12 @@
-/* --- VARIABLES Y CONFIGURACIÓN GLOBAL --- */
+/* --- VARIABLES Y ESTILOS GLOBALES --- */
 :root {
-    --bg-dark: #0d1117;
-    --bg-dark-secondary: #161b22;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --text-primary: #e6edf3;
-    --text-secondary: #8b949e;
-    --accent-gradient: linear-gradient(90deg, #3498db, #9b59b6);
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --primary-color: #6d28d9; /* Un violeta moderno */
+    --secondary-color: #e9d5ff; /* Un lavanda muy suave */
+    --card-bg: #ffffff;
+    --font-title: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
 }
 
 * {
@@ -19,248 +20,257 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-primary);
-    overflow-x: hidden; /* Previene el scroll horizontal por los blobs */
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
 }
 
 .container {
-    max-width: 1140px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* --- FONDO DINÁMICO AURORA UI --- */
-.background-aurora {
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+h1 { font-size: 3.2rem; margin-bottom: 1rem; }
+h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
+h3 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
+h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+p {
+    margin-bottom: 1rem;
+    max-width: 65ch; /* Mejora la legibilidad */
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* --- BOTÓN PRINCIPAL --- */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background-color: #5b21b6;
+}
+
+/* --- BOTÓN FLOTANTE DE WHATSAPP --- */
+.whatsapp-flotante {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(150px); /* La clave del efecto */
-    opacity: 0.4;
-}
-
-.blob1 {
-    width: 400px;
-    height: 400px;
-    background: #3498db;
-    top: -100px;
-    left: -100px;
-}
-
-.blob2 {
-    width: 300px;
-    height: 300px;
-    background: #9b59b6;
-    bottom: -50px;
-    right: -50px;
-}
-
-.blob3 {
-    width: 250px;
-    height: 250px;
-    background: #1abc9c;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.content-wrapper {
-    position: relative;
-    z-index: 1;
-}
-
-/* --- NAVEGACIÓN GLASSMORPHISM --- */
-.navbar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    padding: 1.5rem 0;
+    bottom: 25px;
+    left: 25px;
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 14px;
     z-index: 100;
-    background: rgba(13, 17, 23, 0.6); /* Fondo semi-transparente */
-    backdrop-filter: blur(10px); /* Efecto vidrio */
-    border-bottom: 1px solid var(--border-color);
-}
-
-.navbar .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-
-.logo {
-    font-weight: 700;
-    font-size: 1.5em;
-    color: var(--text-primary);
+    padding: 10px;
     text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
+.whatsapp-flotante svg {
+    margin-right: 8px;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-secondary);
-    font-weight: 600;
-    transition: color 0.3s ease;
+.whatsapp-flotante span {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.4s ease-in-out;
 }
 
-.nav-links a:hover {
-    color: var(--text-primary);
+.whatsapp-flotante:hover span {
+    max-width: 150px;
+    margin-right: 8px;
 }
 
-/* --- SECCIÓN HERO --- */
-.hero {
+/* --- SECCIONES ESPECÍFICAS --- */
+
+/* Hero */
+#hero {
     text-align: center;
     padding: 120px 0;
 }
-
-.hero-title {
-    font-size: 3.5em;
-    font-weight: 700;
-    line-height: 1.2;
-    max-width: 900px;
-    margin: 0 auto 20px;
+#hero p {
+    font-size: 1.2rem;
+    color: #495057;
+    margin: 0 auto 2rem auto;
+}
+#hero span {
+    display: block;
+    margin-top: 1rem;
+    color: #6c757d;
+    font-size: 0.9rem;
 }
 
-.highlight-gradient {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-    font-size: 1.2em;
-    color: var(--text-secondary);
-    max-width: 700px;
-    margin: 0 auto 40px;
-}
-
-.cta-button {
-    display: inline-block;
-    background: var(--accent-gradient);
-    color: var(--text-primary);
-    padding: 15px 35px;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-.cta-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(155, 89, 182, 0.2);
-}
-
-/* --- SECCIONES GENERALES Y TÍTULOS --- */
-.services-section, .about-section, .contact-section {
-    padding: 100px 0;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.8em;
-    font-weight: 700;
-    margin-bottom: 60px;
-}
-
-/* --- TARJETAS DE SERVICIOS GLASSMORPHISM --- */
-.services-grid {
+/* Sobre Mí */
+.about-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+}
+.about-image img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.about-text h2 {
+    text-align: left;
 }
 
-.service-card {
-    background: rgba(22, 27, 34, 0.5); /* Fondo semi-transparente */
-    border: 1px solid var(--border-color);
-    border-radius: 15px;
-    padding: 30px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+/* Para Ti */
+#para-ti {
+    background-color: var(--secondary-color);
 }
-
-.service-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(52, 152, 219, 0.5);
+#para-ti ul {
+    list-style: none;
+    max-width: 700px;
+    margin: 0 auto;
 }
-
-.card-icon {
-    font-size: 3em;
-    margin-bottom: 15px;
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.service-card h3 {
-    font-size: 1.4em;
+#para-ti li {
+    background-color: var(--card-bg);
+    padding: 15px 20px;
     margin-bottom: 10px;
-}
-
-.service-card p {
-    color: var(--text-secondary);
-}
-
-/* --- SECCIÓN "NOSOTROS" --- */
-.about-text {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: var(--text-secondary);
-}
-
-/* --- FORMULARIO DE CONTACTO --- */
-.contact-section form {
-    max-width: 600px;
-    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     display: flex;
-    flex-direction: column;
+    align-items: center;
+}
+#para-ti li::before {
+    content: '✓';
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* Cómo Empezamos */
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+.step .step-number {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-family: var(--font-title);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Testimonios */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
-
-.contact-section input, .contact-section textarea {
-    width: 100%;
-    padding: 15px;
-    background: var(--bg-dark-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    color: var(--text-primary);
-    font-family: 'Poppins', sans-serif;
-    font-size: 1em;
+.testimonial-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+}
+.testimonial-card blockquote {
+    border: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    font-style: italic;
+    flex-grow: 1;
+}
+.testimonial-card cite {
+    font-weight: 500;
+    color: var(--primary-color);
+    align-self: flex-end;
 }
 
-.contact-section input:focus, .contact-section textarea:focus {
-    outline: none;
-    border-color: #3498db;
-}
-
-/* --- FOOTER --- */
-.footer {
+/* CTA Final */
+#cta-final {
+    background-color: var(--text-color);
+    color: var(--bg-color);
     text-align: center;
-    padding: 30px 0;
-    border-top: 1px solid var(--border-color);
-    color: var(--text-secondary);
+}
+#cta-final h2, #cta-final p {
+    color: var(--bg-color);
+}
+#cta-final p {
+    margin: 0 auto 2rem auto;
 }
 
-/* --- RESPONSIVE DESIGN --- */
+/* Footer */
+footer {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #e9ecef;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+footer p {
+    margin-bottom: 0.5rem;
+}
+footer .copy {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+
+/* --- ANIMACIONES Y RESPONSIVE --- */
+
+/* Animación de entrada */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .hero-title { font-size: 2.5em; }
-    .section-title { font-size: 2.2em; }
-    .nav-links { display: none; } /* Simplificación para móvil */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    section { padding: 60px 0; }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .about-image {
+        margin: 0 auto 2rem auto;
+    }
+    .about-text h2 {
+        text-align: center;
+    }
+
+    .steps-container {
+        grid-template-columns: 1fr;
+    }
 }
