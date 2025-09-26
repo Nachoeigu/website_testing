@@ -1,10 +1,11 @@
-/* --- VARIABLES DE COLOR Y ESTILOS GLOBALES --- */
+/* --- VARIABLES Y CONFIGURACIÓN GLOBAL --- */
 :root {
-    --primary-color: #1a2b48; /* Azul oscuro corporativo */
-    --secondary-color: #4a5568; /* Gris para texto */
-    --accent-color: #3498db; /* Azul brillante para botones y links */
-    --background-light: #f8f9fa;
-    --white-color: #ffffff;
+    --bg-dark: #0d1117;
+    --bg-dark-secondary: #161b22;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --accent-gradient: linear-gradient(90deg, #3498db, #9b59b6);
 }
 
 * {
@@ -18,26 +19,75 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.7;
-    color: var(--secondary-color);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden; /* Previene el scroll horizontal por los blobs */
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 1140px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* --- BARRA DE NAVEGACIÓN --- */
+/* --- FONDO DINÁMICO AURORA UI --- */
+.background-aurora {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px); /* La clave del efecto */
+    opacity: 0.4;
+}
+
+.blob1 {
+    width: 400px;
+    height: 400px;
+    background: #3498db;
+    top: -100px;
+    left: -100px;
+}
+
+.blob2 {
+    width: 300px;
+    height: 300px;
+    background: #9b59b6;
+    bottom: -50px;
+    right: -50px;
+}
+
+.blob3 {
+    width: 250px;
+    height: 250px;
+    background: #1abc9c;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- NAVEGACIÓN GLASSMORPHISM --- */
 .navbar {
-    background-color: var(--white-color);
-    padding: 1rem 0;
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1.5rem 0;
+    z-index: 100;
+    background: rgba(13, 17, 23, 0.6); /* Fondo semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto vidrio */
+    border-bottom: 1px solid var(--border-color);
 }
 
 .navbar .container {
@@ -48,168 +98,169 @@ body {
 
 .logo {
     font-weight: 700;
-    font-size: 1.2em;
-    color: var(--primary-color);
+    font-size: 1.5em;
+    color: var(--text-primary);
     text-decoration: none;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-}
-
-.nav-links li {
-    margin-left: 25px;
+    gap: 30px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 700;
+    color: var(--text-secondary);
+    font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: var(--text-primary);
 }
 
 /* --- SECCIÓN HERO --- */
 .hero {
-    height: 85vh;
-    background: linear-gradient(rgba(26, 43, 72, 0.8), rgba(26, 43, 72, 0.8)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1911&auto=format&fit=crop') no-repeat center center/cover;
-    /* ¡Puedes cambiar la URL de la imagen por una tuya! */
-    color: var(--white-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-    padding: 0 20px;
+    padding: 120px 0;
 }
 
-.hero-content h1 {
-    font-size: 3em;
-    margin-bottom: 0.5em;
+.hero-title {
+    font-size: 3.5em;
+    font-weight: 700;
+    line-height: 1.2;
+    max-width: 900px;
+    margin: 0 auto 20px;
 }
 
-.hero-content p {
+.highlight-gradient {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
     font-size: 1.2em;
-    margin-bottom: 1.5em;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 40px;
 }
 
 .cta-button {
     display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--white-color);
-    padding: 15px 30px;
+    background: var(--accent-gradient);
+    color: var(--text-primary);
+    padding: 15px 35px;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    border: none; /* Para que funcione en el form button también */
-    cursor: pointer; /* Para el form button */
-    font-size: 1em; /* Para el form button */
+    border-radius: 50px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
 }
 
 .cta-button:hover {
-    background-color: #2980b9;
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(155, 89, 182, 0.2);
 }
 
-/* --- ESTILOS DE SECCIONES GENERALES --- */
+/* --- SECCIONES GENERALES Y TÍTULOS --- */
 .services-section, .about-section, .contact-section {
-    padding: 80px 0;
+    padding: 100px 0;
+}
+
+.section-title {
     text-align: center;
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 60px;
 }
 
-.services-section h2, .about-section h2, .contact-section h2 {
-    font-size: 2.5em;
-    color: var(--primary-color);
-    margin-bottom: 40px;
-}
-
-/* --- SECCIÓN DE SERVICIOS (GRID) --- */
-.services-section {
-    background-color: var(--background-light);
-}
-
+/* --- TARJETAS DE SERVICIOS GLASSMORPHISM --- */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 30px;
-    text-align: left;
 }
 
 .service-card {
-    background-color: var(--white-color);
+    background: rgba(22, 27, 34, 0.5); /* Fondo semi-transparente */
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    border-color: rgba(52, 152, 219, 0.5);
 }
 
-.service-card .icon {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--accent-color);
+.card-icon {
+    font-size: 3em;
     margin-bottom: 15px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .service-card h3 {
-    color: var(--primary-color);
+    font-size: 1.4em;
     margin-bottom: 10px;
 }
 
+.service-card p {
+    color: var(--text-secondary);
+}
+
 /* --- SECCIÓN "NOSOTROS" --- */
-.about-intro {
+.about-text {
+    text-align: center;
     max-width: 800px;
     margin: 0 auto;
     font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--text-secondary);
 }
 
-/* --- SECCIÓN DE CONTACTO --- */
-.contact-section {
-    background-color: var(--background-light);
-}
-
+/* --- FORMULARIO DE CONTACTO --- */
 .contact-section form {
     max-width: 600px;
-    margin: 20px auto 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 .contact-section input, .contact-section textarea {
     width: 100%;
     padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
+    background: var(--bg-dark-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
     font-size: 1em;
+}
+
+.contact-section input:focus, .contact-section textarea:focus {
+    outline: none;
+    border-color: #3498db;
 }
 
 /* --- FOOTER --- */
 .footer {
-    background-color: var(--primary-color);
-    color: #a0aec0; /* Un gris claro para el texto del footer */
     text-align: center;
-    padding: 25px 0;
+    padding: 30px 0;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
 }
 
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.2em;
-    }
-    .nav-links {
-        display: none; /* En un proyecto real, aquí iría un menú hamburguesa */
-    }
-    .services-section h2, .about-section h2, .contact-section h2 {
-        font-size: 2em;
-    }
+    .hero-title { font-size: 2.5em; }
+    .section-title { font-size: 2.2em; }
+    .nav-links { display: none; } /* Simplificación para móvil */
 }
