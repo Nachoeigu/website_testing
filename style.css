@@ -1,125 +1,130 @@
-/* General */
+/* --- Estilos Generales --- */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  color: #f0f0f0;
-  line-height: 1.6;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: #f8f9fa; /* Un gris muy claro, como en la imagen */
+    color: #343a40; /* Un gris oscuro para el texto */
+    line-height: 1.6;
 }
 
-a {
-  text-decoration: none;
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Header */
+/* --- Header --- */
 header {
-  text-align: center;
-  padding: 80px 20px 60px 20px;
-  background: rgba(0,0,0,0.4);
+    text-align: center;
+    padding: 40px 0;
 }
 
 header h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  color: #00fff7;
+    margin: 0;
+    color: #2c3e50; /* Azul oscuro/corporativo */
+    font-size: 2.2em;
+    font-weight: 700;
 }
 
 header p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+    margin: 10px 0 20px 0;
+    font-size: 1.1em;
+    color: #495057;
 }
 
-header .btn {
-  padding: 12px 25px;
-  background: #00fff7;
-  color: #0f2027;
-  border-radius: 25px;
-  font-weight: bold;
-  transition: 0.3s;
+header a {
+    color: #3498db; /* Azul para el link */
+    text-decoration: underline;
+    font-weight: bold;
 }
 
-header .btn:hover {
-  background: #00bfa5;
-}
-
-/* Services */
-#services {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-#services h2 {
-  margin-bottom: 40px;
-  color: #00fff7;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
+/* --- Tarjetas de Contenido (Servicios y Contacto) --- */
 .card {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 15px;
-  transition: transform 0.3s, background 0.3s;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra sutil */
 }
 
-.card h3 {
-  color: #00fff7;
-  margin-bottom: 10px;
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #2c3e50;
 }
 
-.card p {
-  color: #ccc;
+/* --- Sección de Servicios --- */
+.service-item {
+    margin-bottom: 20px;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  background: rgba(0,255,247,0.1);
+.service-item:last-child {
+    margin-bottom: 0;
 }
 
-/* Contact */
-#contact {
-  padding: 60px 20px;
-  text-align: center;
+.service-item h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+    color: #343a40;
 }
 
-#contact form {
-  max-width: 500px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+.service-item p {
+    margin: 0;
+    color: #6c757d; /* Gris más claro para descripciones */
 }
 
-#contact input, #contact textarea {
-  padding: 12px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 8px;
+/* --- Sección de Contacto y Formulario --- */
+#contact p {
+    margin: 0 0 15px 0;
 }
 
-#contact button {
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  background: #00fff7;
-  color: #0f2027;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+form {
+    margin-top: 20px;
 }
 
-#contact button:hover {
-  background: #00bfa5;
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+    box-sizing: border-box; /* Evita que el padding afecte el ancho */
 }
 
-/* Footer */
+form button {
+    width: auto;
+    padding: 12px 25px;
+    background-color: #2c3e50; /* Mismo azul del título */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #34495e; /* Un poco más claro al pasar el mouse */
+}
+
+/* --- Footer --- */
 footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(0,0,0,0.4);
-  color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+/* --- Adaptación para Móviles --- */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    .card {
+        padding: 20px;
+    }
 }
