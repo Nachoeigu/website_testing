@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
         translatableElements.forEach(el => {
             const text = el.dataset[`lang-${lang}`];
             if (text) {
-                // Para los testimonios que usan comillas, las reemplazamos
                 el.innerHTML = text;
             }
         });
@@ -44,40 +43,40 @@ document.addEventListener("DOMContentLoaded", function() {
         switchLanguage(currentLang);
     });
 
-});
-
-// --- LÓGICA DEL CARRUSEL DE TESTIMONIOS ---
-const swiper = new Swiper('.swiper', {
-    loop: true,
-    grabCursor: true,
-    
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-
-    breakpoints: {
-        640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
+    // --- LÓGICA DEL CARRUSEL DE TESTIMONIOS (MOVIDA AQUÍ ADENTRO) ---
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        grabCursor: true,
+        
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
         },
-        768: {
-            slidesPerView: 2,
-            spaceBetween: 30,
+
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
         },
-        1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
-    }
+
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        }
+    });
+
 });
