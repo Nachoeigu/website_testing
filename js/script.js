@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+    
     // --- LÓGICA DE ANIMACIÓN AL HACER SCROLL ---
     try {
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -10,58 +11,77 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
             }, { threshold: 0.1 });
-
             animatedElements.forEach(element => observer.observe(element));
         }
     } catch (error) {
         console.error("Error en la animación de scroll:", error);
     }
 
-    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (MEJORADA) ---
+    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (MANUAL Y AUTOMÁTICO) ---
     try {
         const langToggle = document.getElementById('lang-toggle');
-        // Selecciono cualquier elemento que tenga data-lang-es o data-lang-en (más robusto)
-        const translatableElements = document.querySelectorAll('[data-lang-es], [data-lang-en]');
-
+        const translatableElements = document.querySelectorAll('[data-lang-es]');
+        const whatsappLink = document.getElementById('whatsapp-link'); // NUEVO: Seleccionamos el link de WPP
+        
         if (langToggle && translatableElements.length > 0) {
-            let currentLang = 'es'; // idioma por defecto
+            let currentLang = 'es';
 
             function switchLanguage(lang) {
-                // Actualizo todos menos el propio botón
+                // Cambia todos los textos de la página
                 translatableElements.forEach(el => {
-                    if (el.id === 'lang-toggle') return;
-                    const text = el.getAttribute(`data-lang-${lang}`);
-                    if (text !== null) {
-                        // Uso textContent para evitar problemas de parseo HTML al setear strings
-                        el.textContent = text;
-                    }
+                    const text = el.dataset[`lang-${lang}`];
+                    if (text) el.innerHTML = text;
                 });
 
-                // Actualizo el botón por separado (así no perdemos listeners ni corrompemos el elemento)
-                const toggleText = langToggle.getAttribute(`data-lang-${lang}`);
-                if (toggleText !== null) {
-                    // innerHTML está bien para emoji, pero textContent también funciona. Uso innerHTML por compatibilidad visual.
-                    langToggle.innerHTML = toggleText;
+                // NUEVO: Cambia el link de WhatsApp dinámicamente
+                if (whatsappLink) {
+                    const baseHref = whatsappLink.href.split('?')[0]; // Tomamos la URL base sin el mensaje
+                    const rawMessage = whatsappLink.dataset[`whatsapp-${lang}`]; // Obtenemos el mensaje del idioma actual
+                    const encodedMessage = encodeURIComponent(rawMessage); // Lo codificamos para la URL
+                    whatsappLink.href = `${baseHref}?text=${encodedMessage}`; // Creamos y asignamos el nuevo link
                 }
 
-                // atributo lang en el html
                 document.documentElement.lang = lang;
-
-                // debug: imprime en consola para verificar comportamiento
-                console.info(`Idioma cambiado a: ${lang} (elementos actualizados: ${translatableElements.length - 1})`);
+                langToggle.textContent = langToggle.dataset[`lang-${lang}`];
+                currentLang = lang;
             }
 
-            // Soporte para click y touch
-            const onToggle = (e) => {
-                e.preventDefault();
-                currentLang = currentLang === 'es' ? 'en' : 'es';
-                switchLanguage(currentLang);
-            };
-            langToggle.addEventListener('click', onToggle);
-            langToggle.addEventListener('touchstart', onToggle, { passive: false });
+            function detectAndSetLanguage() {
+                const savedLang = localStorage.getItem('userLang');
+                if (savedLang) {
+                    switchLanguage(savedLang);
+                    return;
+                }
 
-            // Inicializo estado visual
-            switchLanguage(currentLang);
+                fetch('https://ip-api.com/json/?fields=countryCode')
+                    .then(response => response.json())
+                    .then(data => {
+                        const countryCode = data.countryCode;
+                        const spanishSpeakingCountries = [
+                            'AR', 'BO', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'SV', 'GQ', 
+                            'GT', 'HN', 'MX', 'NI', 'PA', 'PY', 'PE', 'PR', 'ES', 'UY', 'VE'
+                        ];
+                        if (!spanishSpeakingCountries.includes(countryCode)) {
+                            switchLanguage('en');
+                        } else {
+                            // Aseguramos que el link de WPP se configure correctamente en la primera carga
+                            switchLanguage('es');
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error al detectar la geolocalización:", error);
+                        // Si la API falla, configuramos el link en español por defecto
+                        switchLanguage('es');
+                    });
+            }
+
+            langToggle.addEventListener('click', () => {
+                const newLang = currentLang === 'es' ? 'en' : 'es';
+                switchLanguage(newLang);
+                localStorage.setItem('userLang', newLang);
+            });
+
+            detectAndSetLanguage();
         }
     } catch (error) {
         console.error("Error en el interruptor de idioma:", error);
