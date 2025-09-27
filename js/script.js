@@ -38,33 +38,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Función para detectar el idioma basado en la IP
             function detectAndSetLanguage() {
-                // 1. Revisar si el usuario ya eligió un idioma antes
                 const savedLang = localStorage.getItem('userLang');
                 if (savedLang) {
                     switchLanguage(savedLang);
-                    return; // Si ya hay una elección, no hacemos nada más
+                    return;
                 }
 
-                // 2. Si no hay elección, procedemos a detectar (solo en la primera visita)
+                // CORRECCIÓN: Añadimos la URL completa de la API
                 fetch('https://ip-api.com/json/?fields=countryCode')
                     .then(response => response.json())
                     .then(data => {
                         const countryCode = data.countryCode;
-                        // Lista de países de habla hispana principales
                         const spanishSpeakingCountries = [
                             'AR', 'BO', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'SV', 'GQ', 
                             'GT', 'HN', 'MX', 'NI', 'PA', 'PY', 'PE', 'PR', 'ES', 'UY', 'VE'
                         ];
-
-                        // Regla: si el país NO está en la lista, cambiamos a inglés
                         if (!spanishSpeakingCountries.includes(countryCode)) {
                             switchLanguage('en');
                         }
-                        // Si está en la lista, se queda en español por defecto, no hacemos nada.
                     })
                     .catch(error => {
                         console.error("Error al detectar la geolocalización:", error);
-                        // Si la API falla, la página simplemente se queda en español.
                     });
             }
 
@@ -72,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function() {
             langToggle.addEventListener('click', () => {
                 const newLang = currentLang === 'es' ? 'en' : 'es';
                 switchLanguage(newLang);
-                // Guardamos la elección del usuario para futuras visitas
                 localStorage.setItem('userLang', newLang);
             });
 
