@@ -26,36 +26,19 @@ body {
     line-height: 1.7;
 }
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* --- NUEVA ARQUITECTURA DE CAPAS (A PRUEBA DE BALAS) --- */
+.page-wrapper {
+    position: relative;
+    z-index: 1; /* Todo el contenido de la página vive en la capa 1 */
 }
 
-h1, h2, h3, h4 {
-    font-family: var(--font-title);
-    color: #1a1a1a;
-    line-height: 1.3;
+.floating-buttons {
+    position: relative;
+    z-index: 1000; /* El contenedor de los botones vive en la capa 1000 */
 }
 
-h1 { font-size: 3.2rem; margin-bottom: 1rem; }
-h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
-h3 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
-h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-
-p {
-    margin-bottom: 1rem;
-    max-width: 65ch;
-}
-
-section {
-    padding: 80px 0;
-}
-
-/* --- BOTONES FLOTANTES (SOLUCIÓN DEFINITIVA DE CAPAS) --- */
 .lang-switcher, .whatsapp-flotante {
-    position: fixed;
-    z-index: 9999; /* Un z-index muy alto para estar por encima de todo */
+    position: fixed; /* Los botones se posicionan respecto a la ventana */
 }
 
 .lang-switcher {
@@ -88,7 +71,6 @@ section {
 .whatsapp-flotante {
     bottom: 25px;
     right: 25px;
-    left: auto;
     background-color: #25D366;
     color: #FFF;
     border-radius: 50px;
@@ -118,7 +100,33 @@ section {
     margin-right: 8px;
 }
 
-/* --- COMPONENTES GENERALES --- */
+/* --- ESTILOS DEL CONTENIDO (DENTRO DE .page-wrapper) --- */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+h1 { font-size: 3.2rem; margin-bottom: 1rem; }
+h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
+h3 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
+h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+p {
+    margin-bottom: 1rem;
+    max-width: 65ch;
+}
+
+section {
+    padding: 80px 0;
+}
+
 .btn {
     display: inline-block;
     background-color: var(--primary-color);
@@ -135,12 +143,9 @@ section {
     background-color: #5b21b6;
 }
 
-/* --- SECCIONES ESPECÍFICAS --- */
 #hero {
     text-align: center;
     padding: 120px 0;
-    position: relative; /* Necesario para el z-index */
-    z-index: 1; /* Mantiene esta sección en la capa base */
 }
 #hero p {
     font-size: 1.2rem;
@@ -316,14 +321,4 @@ footer .copy {
     .steps-container {
         grid-template-columns: 1fr;
     }
-}
-
-
-/* --- CÓDIGO DE DEBUGGING (BORRAR DESPUÉS) --- */
-* {
-    outline: 1px solid rgba(255, 0, 0, 0.5) !important; /* Borde rojo para todo */
-}
-
-.lang-switcher {
-    outline: 3px solid blue !important; /* Borde azul grueso para el botón */
 }
