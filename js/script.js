@@ -17,41 +17,45 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Error en la animación de scroll:", error);
     }
 
-    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (MEJORADA) ---
+    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (CON WHATSAPP INTEGRADO) ---
     try {
         const langToggle = document.getElementById('lang-toggle');
-        // Selecciono cualquier elemento que tenga data-lang-es o data-lang-en (más robusto)
         const translatableElements = document.querySelectorAll('[data-lang-es], [data-lang-en]');
+        
+        // --- INYECCIÓN 1: Seleccionamos el link de WhatsApp ---
+        const whatsappLink = document.getElementById('whatsapp-link');
+        const baseWhatsappHref = whatsappLink ? whatsappLink.getAttribute('href') : null;
 
         if (langToggle && translatableElements.length > 0) {
             let currentLang = 'es'; // idioma por defecto
 
             function switchLanguage(lang) {
-                // Actualizo todos menos el propio botón
+                // Tu código original para cambiar textos (funciona perfecto)
                 translatableElements.forEach(el => {
                     if (el.id === 'lang-toggle') return;
                     const text = el.getAttribute(`data-lang-${lang}`);
                     if (text !== null) {
-                        // Uso textContent para evitar problemas de parseo HTML al setear strings
                         el.textContent = text;
                     }
                 });
 
-                // Actualizo el botón por separado (así no perdemos listeners ni corrompemos el elemento)
+                // --- INYECCIÓN 2: Añadimos la lógica para actualizar el link de WhatsApp ---
+                if (whatsappLink && baseWhatsappHref) {
+                    const rawMessage = whatsappLink.getAttribute(`data-whatsapp-${lang}`);
+                    if (rawMessage) {
+                        const encodedMessage = encodeURIComponent(rawMessage);
+                        whatsappLink.href = `${baseWhatsappHref}?text=${encodedMessage}`;
+                    }
+                }
+                
+                // Tu código original para actualizar el botón y el HTML (funciona perfecto)
                 const toggleText = langToggle.getAttribute(`data-lang-${lang}`);
                 if (toggleText !== null) {
-                    // innerHTML está bien para emoji, pero textContent también funciona. Uso innerHTML por compatibilidad visual.
                     langToggle.innerHTML = toggleText;
                 }
-
-                // atributo lang en el html
                 document.documentElement.lang = lang;
-
-                // debug: imprime en consola para verificar comportamiento
-                console.info(`Idioma cambiado a: ${lang} (elementos actualizados: ${translatableElements.length - 1})`);
             }
 
-            // Soporte para click y touch
             const onToggle = (e) => {
                 e.preventDefault();
                 currentLang = currentLang === 'es' ? 'en' : 'es';
@@ -60,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
             langToggle.addEventListener('click', onToggle);
             langToggle.addEventListener('touchstart', onToggle, { passive: false });
 
-            // Inicializo estado visual
+            // Tu inicialización original (funciona perfecto)
             switchLanguage(currentLang);
         }
     } catch (error) {
@@ -83,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }
-    } catch (error) {
+    } catch (error)
         console.error("No se pudo inicializar el carrusel Swiper:", error);
     }
 });
