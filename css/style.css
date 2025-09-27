@@ -26,19 +26,57 @@ body {
     line-height: 1.7;
 }
 
-/* --- NUEVA ARQUITECTURA DE CAPAS (A PRUEBA DE BALAS) --- */
+/* --- SOLUCIÓN DEFINITIVA DE CAPAS (BALA DE PLATA) --- */
 .page-wrapper {
-    position: relative;
-    z-index: 1; /* Todo el contenido de la página vive en la capa 1 */
+    /* Desactivamos los eventos de puntero para todo el contenido */
+    pointer-events: none;
+}
+
+/* Reactivamos los eventos de puntero SOLO para los elementos que lo necesitan */
+.page-wrapper a,
+.page-wrapper button,
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-pagination-bullet {
+    pointer-events: auto;
 }
 
 .floating-buttons {
-    position: relative;
-    z-index: 1000; /* El contenedor de los botones vive en la capa 1000 */
+    /* Los botones flotantes siempre son clickeables */
+    pointer-events: auto;
+}
+
+
+/* --- ESTRUCTURA Y ESTILOS GENERALES --- */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+h1 { font-size: 3.2rem; margin-bottom: 1rem; }
+h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
+h3 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
+h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+p {
+    margin-bottom: 1rem;
+    max-width: 65ch;
+}
+
+section {
+    padding: 80px 0;
 }
 
 .lang-switcher, .whatsapp-flotante {
-    position: fixed; /* Los botones se posicionan respecto a la ventana */
+    position: fixed;
+    z-index: 9999;
 }
 
 .lang-switcher {
@@ -98,33 +136,6 @@ body {
 .whatsapp-flotante:hover span {
     max-width: 150px;
     margin-right: 8px;
-}
-
-/* --- ESTILOS DEL CONTENIDO (DENTRO DE .page-wrapper) --- */
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-h1, h2, h3, h4 {
-    font-family: var(--font-title);
-    color: #1a1a1a;
-    line-height: 1.3;
-}
-
-h1 { font-size: 3.2rem; margin-bottom: 1rem; }
-h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
-h3 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
-h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-
-p {
-    margin-bottom: 1rem;
-    max-width: 65ch;
-}
-
-section {
-    padding: 80px 0;
 }
 
 .btn {
@@ -236,10 +247,6 @@ section {
 #testimonios .swiper-button-prev {
     color: var(--primary-color);
     transition: transform 0.2s ease;
-}
-#testimonios .swiper-button-next:hover,
-#testimonios .swiper-button-prev:hover {
-    transform: scale(1.1);
 }
 #testimonios .swiper-pagination-bullet-active {
     background-color: var(--primary-color);
