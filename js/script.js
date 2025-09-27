@@ -17,14 +17,16 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Error en la animación de scroll:", error);
     }
 
-    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (MANUAL Y AUTOMÁTICO) ---
+    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (VERSIÓN MANUAL Y SIMPLIFICADA) ---
     try {
         const langToggle = document.getElementById('lang-toggle');
         const translatableElements = document.querySelectorAll('[data-lang-es]');
-        const whatsappLink = document.getElementById('whatsapp-link'); // NUEVO: Seleccionamos el link de WPP
+        const whatsappLink = document.getElementById('whatsapp-link');
         
+        const baseWhatsappHref = whatsappLink ? whatsappLink.getAttribute('href') : null;
+
         if (langToggle && translatableElements.length > 0) {
-            let currentLang = 'es';
+            let currentLang = 'es'; // El idioma siempre empieza en español
 
             function switchLanguage(lang) {
                 // Cambia todos los textos de la página
@@ -33,55 +35,31 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (text) el.innerHTML = text;
                 });
 
-                // NUEVO: Cambia el link de WhatsApp dinámicamente
-                if (whatsappLink) {
-                    const baseHref = whatsappLink.href.split('?')[0]; // Tomamos la URL base sin el mensaje
-                    const rawMessage = whatsappLink.dataset[`whatsapp-${lang}`]; // Obtenemos el mensaje del idioma actual
-                    const encodedMessage = encodeURIComponent(rawMessage); // Lo codificamos para la URL
-                    whatsappLink.href = `${baseHref}?text=${encodedMessage}`; // Creamos y asignamos el nuevo link
+                // Cambia el link de WhatsApp de forma segura
+                if (whatsappLink && baseWhatsappHref) {
+                    const rawMessage = whatsappLink.dataset[`whatsapp-${lang}`];
+                    if (rawMessage) {
+                        const encodedMessage = encodeURIComponent(rawMessage);
+                        whatsappLink.href = `${baseWhatsappHref}?text=${encodedMessage}`;
+                    }
                 }
 
+                // Actualiza la UI
                 document.documentElement.lang = lang;
                 langToggle.textContent = langToggle.dataset[`lang-${lang}`];
                 currentLang = lang;
             }
 
-            function detectAndSetLanguage() {
-                const savedLang = localStorage.getItem('userLang');
-                if (savedLang) {
-                    switchLanguage(savedLang);
-                    return;
-                }
+            // Configura el mensaje de WhatsApp inicial en español
+            switchLanguage('es');
 
-                fetch('https://ip-api.com/json/?fields=countryCode')
-                    .then(response => response.json())
-                    .then(data => {
-                        const countryCode = data.countryCode;
-                        const spanishSpeakingCountries = [
-                            'AR', 'BO', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'SV', 'GQ', 
-                            'GT', 'HN', 'MX', 'NI', 'PA', 'PY', 'PE', 'PR', 'ES', 'UY', 'VE'
-                        ];
-                        if (!spanishSpeakingCountries.includes(countryCode)) {
-                            switchLanguage('en');
-                        } else {
-                            // Aseguramos que el link de WPP se configure correctamente en la primera carga
-                            switchLanguage('es');
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error al detectar la geolocalización:", error);
-                        // Si la API falla, configuramos el link en español por defecto
-                        switchLanguage('es');
-                    });
-            }
-
+            // Evento para el botón manual
             langToggle.addEventListener('click', () => {
                 const newLang = currentLang === 'es' ? 'en' : 'es';
                 switchLanguage(newLang);
-                localStorage.setItem('userLang', newLang);
+                // Opcional: si querés que recuerde la elección para futuras visitas, descomentá la siguiente línea
+                // localStorage.setItem('userLang', newLang);
             });
-
-            detectAndSetLanguage();
         }
     } catch (error) {
         console.error("Error en el interruptor de idioma:", error);
