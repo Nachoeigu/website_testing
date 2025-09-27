@@ -62,18 +62,24 @@ section {
 
 #lang-toggle {
     background-color: var(--card-bg);
-    border: 1px solid #ddd;
-    padding: 8px 16px;
-    border-radius: 20px;
+    border: none; /* Le sacamos el borde para un look más limpio */
+    padding: 0.5rem; /* Ajustamos el padding */
+    border-radius: 50%; /* Lo hacemos circular */
     cursor: pointer;
-    font-family: var(--font-body);
-    font-weight: 500;
+    font-size: 1.5rem; /* Hacemos la bandera más grande */
+    line-height: 1; /* Ayuda a centrar el emoji verticalmente */
+    width: 50px; /* Ancho fijo */
+    height: 50px; /* Alto fijo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: all 0.2s ease;
 }
 
 #lang-toggle:hover {
-    background-color: #f0f0f0;
-    border-color: #ccc;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 
