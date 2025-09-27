@@ -52,6 +52,31 @@ section {
     padding: 80px 0;
 }
 
+/* --- INTERRUPTOR DE IDIOMA --- */
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#lang-toggle {
+    background-color: var(--card-bg);
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#lang-toggle:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+
 /* --- BOTÓN PRINCIPAL --- */
 .btn {
     display: inline-block;
@@ -73,7 +98,8 @@ section {
 .whatsapp-flotante {
     position: fixed;
     bottom: 25px;
-    left: 25px;
+    right: 25px; /* Cambiado de left a right */
+    left: auto;
     background-color: #25D366;
     color: #FFF;
     border-radius: 50px;
@@ -82,7 +108,7 @@ section {
     z-index: 100;
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 12px; /* Un poco más grande */
     text-decoration: none;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
