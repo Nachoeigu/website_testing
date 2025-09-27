@@ -317,3 +317,13 @@ footer .copy {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* --- CÓDIGO DE DEBUGGING (BORRAR DESPUÉS) --- */
+* {
+    outline: 1px solid rgba(255, 0, 0, 0.5) !important; /* Borde rojo para todo */
+}
+
+.lang-switcher {
+    outline: 3px solid blue !important; /* Borde azul grueso para el botón */
+}
