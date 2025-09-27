@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
     // --- LÓGICA DE ANIMACIÓN AL HACER SCROLL ---
     try {
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -11,55 +10,58 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
             }, { threshold: 0.1 });
+
             animatedElements.forEach(element => observer.observe(element));
         }
     } catch (error) {
         console.error("Error en la animación de scroll:", error);
     }
 
-    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (VERSIÓN MANUAL Y SIMPLIFICADA) ---
+    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (MEJORADA) ---
     try {
         const langToggle = document.getElementById('lang-toggle');
-        const translatableElements = document.querySelectorAll('[data-lang-es]');
-        const whatsappLink = document.getElementById('whatsapp-link');
-        
-        const baseWhatsappHref = whatsappLink ? whatsappLink.getAttribute('href') : null;
+        // Selecciono cualquier elemento que tenga data-lang-es o data-lang-en (más robusto)
+        const translatableElements = document.querySelectorAll('[data-lang-es], [data-lang-en]');
 
         if (langToggle && translatableElements.length > 0) {
-            let currentLang = 'es'; // El idioma siempre empieza en español
+            let currentLang = 'es'; // idioma por defecto
 
             function switchLanguage(lang) {
-                // Cambia todos los textos de la página
+                // Actualizo todos menos el propio botón
                 translatableElements.forEach(el => {
-                    const text = el.dataset[`lang-${lang}`];
-                    if (text) el.innerHTML = text;
+                    if (el.id === 'lang-toggle') return;
+                    const text = el.getAttribute(`data-lang-${lang}`);
+                    if (text !== null) {
+                        // Uso textContent para evitar problemas de parseo HTML al setear strings
+                        el.textContent = text;
+                    }
                 });
 
-                // Cambia el link de WhatsApp de forma segura
-                if (whatsappLink && baseWhatsappHref) {
-                    const rawMessage = whatsappLink.dataset[`whatsapp-${lang}`];
-                    if (rawMessage) {
-                        const encodedMessage = encodeURIComponent(rawMessage);
-                        whatsappLink.href = `${baseWhatsappHref}?text=${encodedMessage}`;
-                    }
+                // Actualizo el botón por separado (así no perdemos listeners ni corrompemos el elemento)
+                const toggleText = langToggle.getAttribute(`data-lang-${lang}`);
+                if (toggleText !== null) {
+                    // innerHTML está bien para emoji, pero textContent también funciona. Uso innerHTML por compatibilidad visual.
+                    langToggle.innerHTML = toggleText;
                 }
 
-                // Actualiza la UI
+                // atributo lang en el html
                 document.documentElement.lang = lang;
-                langToggle.textContent = langToggle.dataset[`lang-${lang}`];
-                currentLang = lang;
+
+                // debug: imprime en consola para verificar comportamiento
+                console.info(`Idioma cambiado a: ${lang} (elementos actualizados: ${translatableElements.length - 1})`);
             }
 
-            // Configura el mensaje de WhatsApp inicial en español
-            switchLanguage('es');
+            // Soporte para click y touch
+            const onToggle = (e) => {
+                e.preventDefault();
+                currentLang = currentLang === 'es' ? 'en' : 'es';
+                switchLanguage(currentLang);
+            };
+            langToggle.addEventListener('click', onToggle);
+            langToggle.addEventListener('touchstart', onToggle, { passive: false });
 
-            // Evento para el botón manual
-            langToggle.addEventListener('click', () => {
-                const newLang = currentLang === 'es' ? 'en' : 'es';
-                switchLanguage(newLang);
-                // Opcional: si querés que recuerde la elección para futuras visitas, descomentá la siguiente línea
-                // localStorage.setItem('userLang', newLang);
-            });
+            // Inicializo estado visual
+            switchLanguage(currentLang);
         }
     } catch (error) {
         console.error("Error en el interruptor de idioma:", error);
