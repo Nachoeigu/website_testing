@@ -210,12 +210,39 @@ section {
     margin-bottom: 0.5rem;
 }
 
-/* Testimonios */
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+/* --- ESTILOS NUEVOS PARA EL CARRUSEL DE TESTIMONIOS --- */
+#testimonios .swiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px; /* Espacio para la paginación */
 }
+
+#testimonios .swiper-slide {
+    display: flex;
+    justify-content: center;
+    height: auto; 
+}
+
+#testimonios .testimonial-card {
+    width: 90%; 
+    height: 100%; 
+    box-sizing: border-box;
+}
+
+#testimonios .swiper-button-next,
+#testimonios .swiper-button-prev {
+    color: var(--primary-color);
+    transition: transform 0.2s ease;
+}
+#testimonios .swiper-button-next:hover,
+#testimonios .swiper-button-prev:hover {
+    transform: scale(1.1);
+}
+
+#testimonios .swiper-pagination-bullet-active {
+    background-color: var(--primary-color);
+}
+
 .testimonial-card {
     background-color: var(--card-bg);
     padding: 30px;
