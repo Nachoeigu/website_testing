@@ -1,25 +1,47 @@
 document.addEventListener("DOMContentLoaded", function() {
     
+    // --- LÓGICA DE ANIMACIÓN AL HACER SCROLL ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    if (animatedElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
 
-    if (!animatedElements) {
-        return;
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
     }
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                // Opcional: deja de observar el elemento una vez que es visible
-                // observer.unobserve(entry.target);
+    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA ---
+    const langToggle = document.getElementById('lang-toggle');
+    const translatableElements = document.querySelectorAll('[data-lang-es]');
+    
+    let currentLang = 'es'; // Idioma por defecto
+
+    function switchLanguage(lang) {
+        translatableElements.forEach(el => {
+            const text = el.dataset[`lang-${lang}`];
+            if (text) {
+                // Para los testimonios que usan comillas, las reemplazamos
+                el.innerHTML = text.replace(/'/g, '"');
             }
         });
-    }, {
-        threshold: 0.1 // El elemento se considera visible cuando el 10% está en pantalla
-    });
+        // Actualiza el atributo lang del HTML para accesibilidad y SEO
+        document.documentElement.lang = lang;
+        
+        // Actualiza el texto del botón
+        langToggle.textContent = langToggle.dataset[`lang-${lang}`];
+    }
 
-    animatedElements.forEach(element => {
-        observer.observe(element);
+    langToggle.addEventListener('click', () => {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        switchLanguage(currentLang);
     });
 
 });
