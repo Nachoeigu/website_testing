@@ -9,6 +9,17 @@
     --font-body: 'Inter', sans-serif;
 }
 
+/* --- AJUSTE DE CAPAS (Z-INDEX) PARA BOTONES FLOTANTES --- */
+main {
+    position: relative; /* Crea un contexto de apilamiento para el contenido principal */
+    z-index: 1;
+}
+
+.lang-switcher, .whatsapp-flotante {
+    z-index: 1000; /* Asegura que los botones estén siempre en la capa superior */
+}
+
+
 * {
     margin: 0;
     padding: 0;
