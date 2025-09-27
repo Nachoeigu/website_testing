@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
     // --- LÓGICA DE ANIMACIÓN AL HACER SCROLL ---
     try {
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -11,66 +10,58 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
             }, { threshold: 0.1 });
+
             animatedElements.forEach(element => observer.observe(element));
         }
     } catch (error) {
         console.error("Error en la animación de scroll:", error);
     }
 
-    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (MANUAL Y AUTOMÁTICO) ---
+    // --- LÓGICA DEL INTERRUPTOR DE IDIOMA (MEJORADA) ---
     try {
         const langToggle = document.getElementById('lang-toggle');
-        const translatableElements = document.querySelectorAll('[data-lang-es]');
-        
+        // Selecciono cualquier elemento que tenga data-lang-es o data-lang-en (más robusto)
+        const translatableElements = document.querySelectorAll('[data-lang-es], [data-lang-en]');
+
         if (langToggle && translatableElements.length > 0) {
-            let currentLang = 'es';
+            let currentLang = 'es'; // idioma por defecto
 
-            // Función para cambiar el idioma en la página
             function switchLanguage(lang) {
+                // Actualizo todos menos el propio botón
                 translatableElements.forEach(el => {
-                    const text = el.dataset[`lang-${lang}`];
-                    if (text) el.innerHTML = text;
+                    if (el.id === 'lang-toggle') return;
+                    const text = el.getAttribute(`data-lang-${lang}`);
+                    if (text !== null) {
+                        // Uso textContent para evitar problemas de parseo HTML al setear strings
+                        el.textContent = text;
+                    }
                 });
-                document.documentElement.lang = lang;
-                langToggle.textContent = langToggle.dataset[`lang-${lang}`];
-                currentLang = lang;
-            }
 
-            // Función para detectar el idioma basado en la IP
-            function detectAndSetLanguage() {
-                const savedLang = localStorage.getItem('userLang');
-                if (savedLang) {
-                    switchLanguage(savedLang);
-                    return;
+                // Actualizo el botón por separado (así no perdemos listeners ni corrompemos el elemento)
+                const toggleText = langToggle.getAttribute(`data-lang-${lang}`);
+                if (toggleText !== null) {
+                    // innerHTML está bien para emoji, pero textContent también funciona. Uso innerHTML por compatibilidad visual.
+                    langToggle.innerHTML = toggleText;
                 }
 
-                // CORRECCIÓN: Añadimos la URL completa de la API
-                fetch('https://ip-api.com/json/?fields=countryCode')
-                    .then(response => response.json())
-                    .then(data => {
-                        const countryCode = data.countryCode;
-                        const spanishSpeakingCountries = [
-                            'AR', 'BO', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'SV', 'GQ', 
-                            'GT', 'HN', 'MX', 'NI', 'PA', 'PY', 'PE', 'PR', 'ES', 'UY', 'VE'
-                        ];
-                        if (!spanishSpeakingCountries.includes(countryCode)) {
-                            switchLanguage('en');
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error al detectar la geolocalización:", error);
-                    });
+                // atributo lang en el html
+                document.documentElement.lang = lang;
+
+                // debug: imprime en consola para verificar comportamiento
+                console.info(`Idioma cambiado a: ${lang} (elementos actualizados: ${translatableElements.length - 1})`);
             }
 
-            // Evento para el botón manual
-            langToggle.addEventListener('click', () => {
-                const newLang = currentLang === 'es' ? 'en' : 'es';
-                switchLanguage(newLang);
-                localStorage.setItem('userLang', newLang);
-            });
+            // Soporte para click y touch
+            const onToggle = (e) => {
+                e.preventDefault();
+                currentLang = currentLang === 'es' ? 'en' : 'es';
+                switchLanguage(currentLang);
+            };
+            langToggle.addEventListener('click', onToggle);
+            langToggle.addEventListener('touchstart', onToggle, { passive: false });
 
-            // Iniciar la detección automática al cargar la página
-            detectAndSetLanguage();
+            // Inicializo estado visual
+            switchLanguage(currentLang);
         }
     } catch (error) {
         console.error("Error en el interruptor de idioma:", error);
