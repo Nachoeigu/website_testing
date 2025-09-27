@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     
     // --- LÓGICA DE ANIMACIÓN AL HACER SCROLL ---
+    // Se envuelve en try...catch para que un error aquí no afecte al resto del sitio.
     try {
         const animatedElements = document.querySelectorAll('.animate-on-scroll');
         if (animatedElements.length > 0) {
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // --- LÓGICA DEL INTERRUPTOR DE IDIOMA ---
+    // Se envuelve en try...catch para proteger esta funcionalidad crítica.
     try {
         const langToggle = document.getElementById('lang-toggle');
         const translatableElements = document.querySelectorAll('[data-lang-es]');
@@ -50,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Error en el interruptor de idioma:", error);
     }
 
-    // --- LÓGICA DEL CARRUSEL DE TESTIMONIOS (A PRUEBA DE FALLOS) ---
+    // --- LÓGICA DEL CARRUSEL DE TESTIMONIOS ---
+    // Se envuelve en try...catch para que un fallo en la librería externa no rompa el sitio.
     try {
-        // Verificamos que la librería Swiper esté cargada y el elemento exista
         if (typeof Swiper !== 'undefined' && document.querySelector('.swiper')) {
             const swiper = new Swiper('.swiper', {
                 loop: true,
@@ -90,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     } catch (error) {
-        // Si algo falla al inicializar Swiper, no se romperá el resto de la página.
         console.error("No se pudo inicializar el carrusel Swiper:", error);
     }
 
