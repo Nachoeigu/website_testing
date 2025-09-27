@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const text = el.dataset[`lang-${lang}`];
             if (text) {
                 // Para los testimonios que usan comillas, las reemplazamos
-                el.innerHTML = text.replace(/'/g, '"');
+                el.innerHTML = text;
             }
         });
         // Actualiza el atributo lang del HTML para accesibilidad y SEO
