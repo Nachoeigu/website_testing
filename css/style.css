@@ -42,7 +42,10 @@ body {
 }
 
 .floating-buttons {
-    /* Los botones flotantes siempre son clickeables */
+    position: fixed; /* para evitar problemas si su contenedor no está posicionado */
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
     pointer-events: auto;
 }
 
