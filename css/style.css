@@ -29,7 +29,7 @@ body {
 /* --- SOLUCIÓN DEFINITIVA DE CAPAS (BALA DE PLATA) --- */
 .page-wrapper {
     /* Desactivamos los eventos de puntero para todo el contenido */
-    pointer-events: none;
+    /* pointer-events: none;*/
 }
 
 /* Reactivamos los eventos de puntero SOLO para los elementos que lo necesitan */
