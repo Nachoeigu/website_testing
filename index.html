@@ -13,21 +13,28 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Interruptor de Idioma -->
+    <div class="lang-switcher">
+        <button id="lang-toggle" data-lang-es="EN" data-lang-en="ES">EN</button>
+    </div>
 
     <!-- WhatsApp Link -->
     <a href="https://wa.me/5491112345678?text=Hola%20Cristina,%20quisiera%20hacerte%20una%20consulta%20sobre%20las%20sesiones." class="whatsapp-flotante" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-6.7-4-71.6 18.7 19-70.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-        <span>Escríbeme aquí</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32" height="32"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-6.7-4-71.6 18.7 19-70.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        <span data-lang-es="Escribime acá" data-lang-en="Message me">Escribime acá</span>
     </a>
 
     <main>
         <!-- SECCIÓN 1: BIENVENIDA -->
         <section id="hero" class="animate-on-scroll">
             <div class="container">
-                <h1>Un espacio para encontrarte.</h1>
-                <p>Soy Cristina Fernandez, psicóloga, y te ofrezco un espacio de terapia online, confidencial y adaptado a tu ritmo. Desde Buenos Aires para donde estés.</p>
-                <a href="https://wa.me/5491112345678?text=Hola%20Cristina,%20quisiera%20hacerte%20una%20consulta%20sobre%20las%20sesiones." class="btn" target="_blank" rel="noopener noreferrer">Conversemos sin compromiso</a>
-                <span>Sesiones en español e inglés.</span>
+                <h1 data-lang-es="Un espacio para encontrarte." data-lang-en="A space to find yourself.">Un espacio para encontrarte.</h1>
+                <p data-lang-es="Soy Cristina Fernandez, psicóloga, y te ofrezco un espacio de terapia online, confidencial y adaptado a tu ritmo. Desde Buenos Aires para donde estés." data-lang-en="I'm Cristina Fernandez, a psychologist, offering a confidential online therapy space, tailored to your pace. From Buenos Aires to wherever you are.">Soy Cristina Fernandez, psicóloga, y te ofrezco un espacio de terapia online, confidencial y adaptado a tu ritmo. Desde Buenos Aires para donde estés.</p>
+                <a href="https://wa.me/5491112345678?text=Hola%20Cristina,%20quisiera%20hacerte%20una%20consulta%20sobre%20las%20sesiones." class="btn" target="_blank" rel="noopener noreferrer" data-lang-es="Conversemos sin compromiso" data-lang-en="Let's have a free chat">Conversemos sin compromiso</a>
+                <span data-lang-es="Sesiones en español e inglés." data-lang-en="Sessions available in Spanish and English.">Sesiones en español e inglés.</span>
             </div>
         </section>
 
@@ -38,23 +45,23 @@
                     <img src="assets/cristina-fernandez.jpeg" alt="Foto de la Licenciada Cristina Fernandez">
                 </div>
                 <div class="about-text">
-                    <h2>Hola, soy Cris.</h2>
-                    <p>Creo que todos necesitamos un espacio seguro para procesar lo que nos pasa, para poner en palabras las ideas y emociones que a veces nos abruman. Con 4 años de experiencia, mi enfoque es práctico y cercano, buscando siempre crear un vínculo de confianza.</p>
-                    <p>La terapia online nos da la flexibilidad de conectar sin importar las distancias. Mi consultorio es virtual, pero la conexión que creamos es real. Juntos podemos encontrar las herramientas que ya tienes dentro de ti para sentirte mejor.</p>
+                    <h2 data-lang-es="Hola, soy Cris." data-lang-en="Hi, I'm Cris.">Hola, soy Cris.</h2>
+                    <p data-lang-es="Creo que todos necesitamos un espacio seguro para procesar lo que nos pasa. Con 4 años de experiencia, mi enfoque es práctico y cercano, buscando siempre crear un vínculo de confianza." data-lang-en="I believe we all need a safe space to process what happens to us. With 4 years of experience, my approach is practical and warm, always aiming to build a bond of trust.">Creo que todos necesitamos un espacio seguro para procesar lo que nos pasa. Con 4 años de experiencia, mi enfoque es práctico y cercano, buscando siempre crear un vínculo de confianza.</p>
+                    <p data-lang-es="Mi rol es doble: ayudarte a potenciar las herramientas que ya tenés y, al mismo tiempo, darte nuevas estrategias para que puedas construir el bienestar que buscás." data-lang-en="My role is twofold: to help you enhance the tools you already have, and at the same time, provide you with new strategies to build the well-being you're looking for.">Mi rol es doble: ayudarte a potenciar las herramientas que ya tenés y, al mismo tiempo, darte nuevas estrategias para que puedas construir el bienestar que buscás.</p>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 3: ¿ES PARA TI? -->
+        <!-- SECCIÓN 3: ¿ES PARA VOS? -->
         <section id="para-ti" class="animate-on-scroll">
             <div class="container">
-                <h3>Si te sientes así, la terapia puede ser para ti.</h3>
+                <h3 data-lang-es="Si te sentís así, la terapia puede ser para vos." data-lang-en="If this sounds like you, therapy can help.">Si te sentís así, la terapia puede ser para vos.</h3>
                 <ul>
-                    <li>Sientes que la ansiedad o el estrés te superan en el día a día.</li>
-                    <li>Te cuesta poner límites o te sientes inseguro/a en tus relaciones.</li>
-                    <li>Estás atravesando un gran cambio (laboral, personal, una mudanza) y no sabes por dónde empezar.</li>
-                    <li>Repites patrones que te hacen mal y quieres entender por qué.</li>
-                    <li>Simplemente, quieres conocerte mejor y trabajar en tu crecimiento personal.</li>
+                    <li data-lang-es="Sentís que la ansiedad o el estrés te superan en el día a día." data-lang-en="You feel that anxiety or stress are overwhelming you day to day.">Sentís que la ansiedad o el estrés te superan en el día a día.</li>
+                    <li data-lang-es="Te cuesta poner límites o te sentís inseguro/a en tus relaciones." data-lang-en="You struggle with setting boundaries or feel insecure in your relationships.">Te cuesta poner límites o te sentís inseguro/a en tus relaciones.</li>
+                    <li data-lang-es="Estás atravesando un gran cambio (laboral, personal, una mudanza) y no sabés por dónde empezar." data-lang-en="You're going through a big change (work, personal, a move) and don't know where to start.">Estás atravesando un gran cambio (laboral, personal, una mudanza) y no sabés por dónde empezar.</li>
+                    <li data-lang-es="Sentís que repetís patrones que te hacen mal y querés no solo entender el porqué, sino también encontrar la forma de cambiarlos." data-lang-en="You feel you're repeating harmful patterns and want to not only understand why, but also find a way to change them.">Sentís que repetís patrones que te hacen mal y querés no solo entender el porqué, sino también encontrar la forma de cambiarlos.</li>
+                    <li data-lang-es="Simplemente, querés conocerte mejor y trabajar en tu crecimiento personal." data-lang-en="You simply want to know yourself better and work on your personal growth.">Simplemente, querés conocerte mejor y trabajar en tu crecimiento personal.</li>
                 </ul>
             </div>
         </section>
@@ -62,22 +69,22 @@
         <!-- SECCIÓN 4: CÓMO EMPEZAMOS -->
         <section id="como-empezamos" class="animate-on-scroll">
             <div class="container">
-                <h2>Empezar es muy sencillo.</h2>
+                <h2 data-lang-es="Empezar es muy sencillo." data-lang-en="Getting started is simple.">Empezar es muy sencillo.</h2>
                 <div class="steps-container">
                     <div class="step">
                         <span class="step-number">01</span>
-                        <h4>Primer Contacto</h4>
-                        <p>Escríbeme por WhatsApp. Cuéntame brevemente qué te trae a terapia, sin presiones. Este primer mensaje es para romper el hielo.</p>
+                        <h4 data-lang-es="Primer Contacto" data-lang-en="First Contact">Primer Contacto</h4>
+                        <p data-lang-es="Escribime por WhatsApp. Contame brevemente qué te trae a terapia, sin presiones. Este primer mensaje es para romper el hielo." data-lang-en="Send me a message on WhatsApp. Briefly tell me what brings you to therapy, no pressure. This first message is just to break the ice.">Escribime por WhatsApp. Contame brevemente qué te trae a terapia, sin presiones. Este primer mensaje es para romper el hielo.</p>
                     </div>
                     <div class="step">
                         <span class="step-number">02</span>
-                        <h4>Nuestra primera charla</h4>
-                        <p>Coordinamos una videollamada de 30 minutos, sin costo. Nos servirá para conocernos y para que puedas ver si te sientes a gusto.</p>
+                        <h4 data-lang-es="Nuestra primera charla" data-lang-en="Our first chat">Nuestra primera charla</h4>
+                        <p data-lang-es="Coordinamos una videollamada de 30 minutos, sin costo. Nos servirá para conocernos y para que puedas chequear si te sentís a gusto." data-lang-en="We'll schedule a free 30-minute video call. It's a chance for us to meet and for you to see if you feel comfortable.">Coordinamos una videollamada de 30 minutos, sin costo. Nos servirá para conocernos y para que puedas chequear si te sentís a gusto.</p>
                     </div>
                     <div class="step">
                         <span class="step-number">03</span>
-                        <h4>Comenzamos tu proceso</h4>
-                        <p>Si ambos sentimos que hay una buena conexión, definimos la frecuencia de las sesiones y empezamos a trabajar juntos en tus objetivos.</p>
+                        <h4 data-lang-es="Comenzamos tu proceso" data-lang-en="We begin your process">Comenzamos tu proceso</h4>
+                        <p data-lang-es="Si sentís que este es el espacio adecuado para vos y estás de acuerdo con la propuesta de trabajo, definimos la frecuencia de las sesiones y empezamos a construir tu proceso." data-lang-en="If you feel this is the right space for you and agree with the proposed approach, we'll define the session frequency and start building your process.">Si sentís que este es el espacio adecuado para vos y estás de acuerdo con la propuesta de trabajo, definimos la frecuencia de las sesiones y empezamos a construir tu proceso.</p>
                     </div>
                 </div>
             </div>
@@ -86,18 +93,18 @@
         <!-- SECCIÓN 5: TESTIMONIOS -->
         <section id="testimonios" class="animate-on-scroll">
             <div class="container">
-                <h3>Lo que dicen quienes han confiado en este espacio.</h3>
+                <h3 data-lang-es="Lo que dicen quienes han confiado en este espacio." data-lang-en="What others have said about this space.">Lo que dicen quienes han confiado en este espacio.</h3>
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
-                        <blockquote>"Las sesiones con Cristina me ayudaron a poner orden en mi cabeza. Es muy fácil hablar con ella y la modalidad online me resultó súper cómoda. La recomiendo mucho."</blockquote>
+                        <blockquote data-lang-es='"Las sesiones con Cristina me ayudaron a poner orden en mi cabeza. Es muy fácil hablar con ella y la modalidad online me resultó súper cómoda. La recomiendo mucho."' data-lang-en='"Sessions with Cristina helped me clear my head. She is very easy to talk to, and the online format was super convenient for me. I highly recommend her."'>"Las sesiones con Cristina me ayudaron a poner orden en mi cabeza. Es muy fácil hablar con ella y la modalidad online me resultó súper cómoda. La recomiendo mucho."</blockquote>
                         <cite>– M.L., Berlín</cite>
                     </div>
                     <div class="testimonial-card">
-                        <blockquote>"I was looking for a therapist who could hold sessions in English and I'm so glad I found Cristina. She is empathetic and created a space where I felt truly heard."</blockquote>
+                        <blockquote data-lang-es='"Buscaba una terapeuta que pudiera dar sesiones en inglés y estoy muy contenta de haber encontrado a Cristina. Es empática, perceptiva y creó un espacio donde me sentí realmente escuchada."' data-lang-en='"I was looking for a therapist who could hold sessions in English and I&apos;m so glad I found Cristina. She is empathetic, insightful, and created a space where I felt truly heard."'>"Buscaba una terapeuta que pudiera dar sesiones en inglés y estoy muy contenta de haber encontrado a Cristina. Es empática, perceptiva y creó un espacio donde me sentí realmente escuchada."</blockquote>
                         <cite>– James, Austin</cite>
                     </div>
                     <div class="testimonial-card">
-                        <blockquote>"Gracias a la terapia pude entender muchas cosas de mí. Cristina es una profesional cálida y cercana, me sentí acompañada en todo momento, incluso a miles de kilómetros."</blockquote>
+                        <blockquote data-lang-es='"Gracias a la terapia pude entender muchas cosas de mí. Cristina es una profesional cálida y cercana, me sentí acompañada en todo momento, incluso a miles de kilómetros."' data-lang-en='"Thanks to therapy, I was able to understand many things about myself. Cristina is a warm and approachable professional; I felt supported at all times, even from thousands of miles away."'>"Gracias a la terapia pude entender muchas cosas de mí. Cristina es una profesional cálida y cercana, me sentí acompañada en todo momento, incluso a miles de kilómetros."</blockquote>
                         <cite>– Sofía, Madrid</cite>
                     </div>
                 </div>
@@ -107,9 +114,9 @@
         <!-- SECCIÓN 6: CTA FINAL -->
         <section id="cta-final" class="animate-on-scroll">
             <div class="container">
-                <h2>¿Conversamos?</h2>
-                <p>La decisión de empezar es tuya. Yo estoy aquí para acompañarte cuando estés lista/o.</p>
-                <a href="https://wa.me/5491112345678?text=Hola%20Cristina,%20quisiera%20hacerte%20una%20consulta%20sobre%20las%20sesiones." class="btn" target="_blank" rel="noopener noreferrer">Envíame un mensaje por WhatsApp</a>
+                <h2 data-lang-es="¿Conversamos?" data-lang-en="Ready to talk?">¿Conversamos?</h2>
+                <p data-lang-es="La decisión de empezar es tuya. Yo estoy acá para acompañarte cuando estés lista/o." data-lang-en="The decision to start is yours. I'm here to support you whenever you're ready.">La decisión de empezar es tuya. Yo estoy acá para acompañarte cuando estés lista/o.</p>
+                <a href="https://wa.me/5491112345678?text=Hola%20Cristina,%20quisiera%20hacerte%20una%20consulta%20sobre%20las%20sesiones." class="btn" target="_blank" rel="noopener noreferrer" data-lang-es="Enviame un mensaje por WhatsApp" data-lang-en="Send me a WhatsApp message">Enviame un mensaje por WhatsApp</a>
             </div>
         </section>
     </main>
@@ -117,7 +124,7 @@
     <footer>
         <div class="container">
             <p><strong>Lic. Cristina Fernandez</strong> | Psicóloga (M.N. XXXXX)</p>
-            <p>Terapia Online | Buenos Aires, Argentina.</p>
+            <p data-lang-es="Terapia Online | Buenos Aires, Argentina." data-lang-en="Online Therapy | Buenos Aires, Argentina.">Terapia Online | Buenos Aires, Argentina.</p>
             <p class="copy">&copy; 2024 Cristina Fernandez. Todos los derechos reservados.</p>
         </div>
     </footer>
