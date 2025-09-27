@@ -9,17 +9,6 @@
     --font-body: 'Inter', sans-serif;
 }
 
-/* --- AJUSTE DE CAPAS (Z-INDEX) PARA BOTONES FLOTANTES --- */
-main {
-    position: relative; /* Crea un contexto de apilamiento para el contenido principal */
-    z-index: 1;
-}
-
-.lang-switcher, .whatsapp-flotante {
-    z-index: 1000; /* Asegura que los botones estén siempre en la capa superior */
-}
-
-
 * {
     margin: 0;
     padding: 0;
@@ -35,6 +24,12 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.7;
+}
+
+/* --- CONTENIDO PRINCIPAL (CAPA BASE) --- */
+main {
+    position: relative;
+    z-index: 1;
 }
 
 .container {
@@ -56,20 +51,19 @@ h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
 
 p {
     margin-bottom: 1rem;
-    max-width: 65ch; /* Mejora la legibilidad */
+    max-width: 65ch;
 }
 
 section {
     padding: 80px 0;
 }
 
-/* --- INTERRUPTOR DE IDIOMA Y BOTONES FLOTANTES (SOLUCIÓN DE CAPAS) --- */
+/* --- BOTONES FLOTANTES (CAPA SUPERIOR) --- */
 .lang-switcher {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1001; /* Le damos el z-index más alto */
-    isolation: isolate; /* Crea un nuevo contexto de apilamiento, aislando el botón */
+    z-index: 1001; /* El más alto para que nada lo tape */
 }
 
 #lang-toggle {
@@ -94,45 +88,20 @@ section {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Aseguramos que el contenido principal esté en una capa inferior */
-main {
-    position: relative;
-    z-index: 1;
-}
-
-
-/* --- BOTÓN PRINCIPAL --- */
-.btn {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    background-color: #5b21b6;
-}
-
-/* --- BOTÓN FLOTANTE DE WHATSAPP --- */
 .whatsapp-flotante {
     position: fixed;
     bottom: 25px;
-    right: 25px; /* Cambiado de left a right */
+    right: 25px;
     left: auto;
     background-color: #25D366;
     color: #FFF;
     border-radius: 50px;
     text-align: center;
     font-size: 14px;
-    z-index: 100;
+    z-index: 1000; /* Un poco menos que el de idioma, pero aún alto */
     display: flex;
     align-items: center;
-    padding: 12px; /* Un poco más grande */
+    padding: 12px;
     text-decoration: none;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
@@ -152,6 +121,23 @@ main {
 .whatsapp-flotante:hover span {
     max-width: 150px;
     margin-right: 8px;
+}
+
+/* --- COMPONENTES GENERALES --- */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background-color: #5b21b6;
 }
 
 /* --- SECCIONES ESPECÍFICAS --- */
@@ -234,25 +220,22 @@ main {
     margin-bottom: 0.5rem;
 }
 
-/* --- ESTILOS NUEVOS PARA EL CARRUSEL DE TESTIMONIOS --- */
+/* Testimonios (Carrusel) */
 #testimonios .swiper {
     width: 100%;
     padding-top: 20px;
-    padding-bottom: 50px; /* Espacio para la paginación */
+    padding-bottom: 50px;
 }
-
 #testimonios .swiper-slide {
     display: flex;
     justify-content: center;
     height: auto; 
 }
-
 #testimonios .testimonial-card {
     width: 90%; 
     height: 100%; 
     box-sizing: border-box;
 }
-
 #testimonios .swiper-button-next,
 #testimonios .swiper-button-prev {
     color: var(--primary-color);
@@ -262,11 +245,9 @@ main {
 #testimonios .swiper-button-prev:hover {
     transform: scale(1.1);
 }
-
 #testimonios .swiper-pagination-bullet-active {
     background-color: var(--primary-color);
 }
-
 .testimonial-card {
     background-color: var(--card-bg);
     padding: 30px;
@@ -318,8 +299,6 @@ footer .copy {
 }
 
 /* --- ANIMACIONES Y RESPONSIVE --- */
-
-/* Animación de entrada */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -330,7 +309,6 @@ footer .copy {
     transform: translateY(0);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
