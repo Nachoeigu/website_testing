@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF--8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lic. Cristina Fernandez | Terapia Online</title>
     <meta name="description" content="Terapia online en español e inglés con la Lic. Cristina Fernandez. Un espacio seguro para tu bienestar emocional, desde Buenos Aires para el mundo.">
@@ -11,7 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
+    <!-- Swiper.js CSS (NUEVO) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <!-- Tu CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -47,8 +50,7 @@
                 <div class="about-text">
                     <h2 data-lang-es="Hola, soy Cris." data-lang-en="Hi, I'm Cris.">Hola, soy Cris.</h2>
                     <p data-lang-es="Creo que todos necesitamos un espacio seguro para procesar lo que nos pasa. Con 4 años de experiencia, mi enfoque es práctico y cercano, buscando siempre crear un vínculo de confianza." data-lang-en="I believe we all need a safe space to process what happens to us. With 4 years of experience, my approach is practical and warm, always aiming to build a bond of trust.">Creo que todos necesitamos un espacio seguro para procesar lo que nos pasa. Con 4 años de experiencia, mi enfoque es práctico y cercano, buscando siempre crear un vínculo de confianza.</p>
-                    <p data-lang-es="Mi rol es doble: ayudarte a potenciar las herramientas que ya tenés y, al mismo tiempo, darte nuevas estrategias para que puedas construir el bienestar que buscás." data-lang-en="My role is twofold: to help you enhance the tools you already have, and at the same time, provide you with new strategies to build the well-being you're looking for.">Mi rol es doble: ayudarte a potenciar las herramientas que ya tenés y, al mismo tiempo, darte nuevas estrategias para que puedas construir el bienestar que buscás.</p>
-                </div>
+                    <p data-lang-es="Mi trabajo consiste en acompañarte a que identifiques los recursos que ya tenés y, a la vez, incorpores nuevas estrategias que te sirvan para manejar lo que te preocupa y avanzar hacia la vida que querés." data-lang-en="My work is to help you identify the resources you already have, while at the same time helping you incorporate new strategies to manage what concerns you and move towards the life you want.">Mi trabajo consiste en acompañarte a que identifiques los recursos que ya tenés y, a la vez, incorpores nuevas estrategias que te sirvan para manejar lo que te preocupa y avanzar hacia la vida que querés.</p>                </div>
             </div>
         </section>
 
@@ -84,29 +86,69 @@
                     <div class="step">
                         <span class="step-number">03</span>
                         <h4 data-lang-es="Comenzamos tu proceso" data-lang-en="We begin your process">Comenzamos tu proceso</h4>
-                        <p data-lang-es="Si sentís que este es el espacio adecuado para vos y estás de acuerdo con la propuesta de trabajo, definimos la frecuencia de las sesiones y empezamos a construir tu proceso." data-lang-en="If you feel this is the right space for you and agree with the proposed approach, we'll define the session frequency and start building your process.">Si sentís que este es el espacio adecuado para vos y estás de acuerdo con la propuesta de trabajo, definimos la frecuencia de las sesiones y empezamos a construir tu proceso.</p>
+                        <p data-lang-es="Si sentís que este es el espacio adecuado para vos, nuestro primer paso será definir juntos los objetivos que darán dirección a tu proceso terapéutico." data-lang-en="If you feel this is the right space for you, our first step will be to collaboratively define the goals that will give direction to your therapeutic journey.">Si sentís que este es el espacio adecuado para vos, nuestro primer paso será definir juntos los objetivos que darán dirección a tu proceso terapéutico.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 5: TESTIMONIOS -->
+        <!-- SECCIÓN 5: TESTIMONIOS (ACTUALIZADA CON CARRUSEL) -->
         <section id="testimonios" class="animate-on-scroll">
             <div class="container">
                 <h3 data-lang-es="Lo que dicen quienes han confiado en este espacio." data-lang-en="What others have said about this space.">Lo que dicen quienes han confiado en este espacio.</h3>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <blockquote data-lang-es='"Las sesiones con Cristina me ayudaron a poner orden en mi cabeza. Es muy fácil hablar con ella y la modalidad online me resultó súper cómoda. La recomiendo mucho."' data-lang-en='"Sessions with Cristina helped me clear my head. She is very easy to talk to, and the online format was super convenient for me. I highly recommend her."'>"Las sesiones con Cristina me ayudaron a poner orden en mi cabeza. Es muy fácil hablar con ella y la modalidad online me resultó súper cómoda. La recomiendo mucho."</blockquote>
-                        <cite>– M.L., Berlín</cite>
+                
+                <!-- Estructura del Carrousel Swiper -->
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <blockquote data-lang-es='"Encontrar a Cris fue clave. Siendo de Córdoba, pensé que la terapia online sería más distante, pero fue todo lo contrario. Me sentí súper cómoda y acompañada desde el primer día."' data-lang-en='"Finding Cris was key. Being from Córdoba, I thought online therapy would feel distant, but it was the complete opposite. I felt super comfortable and supported from day one."'>"Encontrar a Cris fue clave. Siendo de Córdoba, pensé que la terapia online sería más distante, pero fue todo lo contrario. Me sentí súper cómoda y acompañada desde el primer día."</blockquote>
+                                <cite>– M.L., Córdoba 🇦🇷</cite>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <blockquote data-lang-es='"Aunque vivo en Buenos Aires, la modalidad online me cambió la vida. Me ahorra tiempo y me permite hacer terapia desde la comodidad de mi casa. Cristina es una profesional excelente."' data-lang-en='"Even though I live in Buenos Aires, the online format changed my life. It saves me time and allows me to have therapy from the comfort of my home. Cristina is an excellent professional."'>"Aunque vivo en Buenos Aires, la modalidad online me cambió la vida. Me ahorra tiempo y me permite hacer terapia desde la comodidad de mi casa. Cristina es una profesional excelente."</blockquote>
+                                <cite>– J.P., Buenos Aires 🇦🇷</cite>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <blockquote data-lang-es='"Vivir en Málaga y poder hacer terapia con una psicóloga argentina fue un alivio enorme. Entiende perfectamente mi contexto cultural. Me ayudó muchísimo en mi proceso de adaptación."' data-lang-en='"Living in Málaga and being able to have therapy with an Argentinian psychologist was a huge relief. She perfectly understands my cultural context. She helped me so much in my adaptation process."'>"Vivir en Málaga y poder hacer terapia con una psicóloga argentina fue un alivio enorme. Entiende perfectamente mi contexto cultural. Me ayudó muchísimo en mi proceso de adaptación."</blockquote>
+                                <cite>– Sofía, Málaga 🇪🇸</cite>
+                            </div>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <blockquote data-lang-es='"La conexión fue inmediata, a pesar de la distancia. Desde Colombia, encontré un espacio seguro y sin juicios para trabajar en mi ansiedad. Súper recomendada."' data-lang-en='"The connection was immediate, despite the distance. From Colombia, I found a safe, non-judgmental space to work on my anxiety. Highly recommended."'>"La conexión fue inmediata, a pesar de la distancia. Desde Colombia, encontré un espacio seguro y sin juicios para trabajar en mi ansiedad. Súper recomendada."</blockquote>
+                                <cite>– D.R., Bogotá 🇨🇴</cite>
+                            </div>
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <blockquote data-lang-es='"Necesitaba una terapeuta bilingüe y Cristina fue la elección perfecta. Su inglés es fluido y creó un ambiente de gran apoyo y comprensión para que yo pudiera trabajar en mi crecimiento personal. Muy agradecido."' data-lang-en='"I needed a bilingual therapist and Cristina was the perfect fit. Her English is fluent, and she created a very insightful and supportive environment for me to work on my personal growth. Truly grateful."'>"Necesitaba una terapeuta bilingüe y Cristina fue la elección perfecta. Su inglés es fluido y creó un ambiente de gran apoyo y comprensión para que yo pudiera trabajar en mi crecimiento personal. Muy agradecido."</blockquote>
+                                <cite>– Alex, Miami 🇺🇸</cite>
+                            </div>
+                        </div>
+                        <!-- Slide 6 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <blockquote data-lang-es='"Las sesiones con Cristina me ayudaron a poner orden en mi cabeza. Es muy fácil hablar con ella y la modalidad online me resultó súper cómoda. La recomiendo mucho."' data-lang-en='"Sessions with Cristina helped me clear my head. She is very easy to talk to, and the online format was super convenient for me. I highly recommend her."'>"Las sesiones con Cristina me ayudaron a poner orden en mi cabeza. Es muy fácil hablar con ella y la modalidad online me resultó súper cómoda. La recomiendo mucho."</blockquote>
+                                <cite>– M.L., Berlín 🇩🇪</cite>
+                            </div>
+                        </div>
                     </div>
-                    <div class="testimonial-card">
-                        <blockquote data-lang-es='"Buscaba una terapeuta que pudiera dar sesiones en inglés y estoy muy contenta de haber encontrado a Cristina. Es empática, perceptiva y creó un espacio donde me sentí realmente escuchada."' data-lang-en='"I was looking for a therapist who could hold sessions in English and I&apos;m so glad I found Cristina. She is empathetic, insightful, and created a space where I felt truly heard."'>"Buscaba una terapeuta que pudiera dar sesiones en inglés y estoy muy contenta de haber encontrado a Cristina. Es empática, perceptiva y creó un espacio donde me sentí realmente escuchada."</blockquote>
-                        <cite>– James, Austin</cite>
-                    </div>
-                    <div class="testimonial-card">
-                        <blockquote data-lang-es='"Gracias a la terapia pude entender muchas cosas de mí. Cristina es una profesional cálida y cercana, me sentí acompañada en todo momento, incluso a miles de kilómetros."' data-lang-en='"Thanks to therapy, I was able to understand many things about myself. Cristina is a warm and approachable professional; I felt supported at all times, even from thousands of miles away."'>"Gracias a la terapia pude entender muchas cosas de mí. Cristina es una profesional cálida y cercana, me sentí acompañada en todo momento, incluso a miles de kilómetros."</blockquote>
-                        <cite>– Sofía, Madrid</cite>
-                    </div>
+                    <!-- Paginación -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- Flechas de Navegación -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             </div>
         </section>
@@ -129,6 +171,10 @@
         </div>
     </footer>
 
+    <!-- Swiper.js JS (NUEVO) -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Tu script.js (DEBE IR DESPUÉS de Swiper.js) -->
     <script src="js/script.js"></script>
 </body>
 </html>
