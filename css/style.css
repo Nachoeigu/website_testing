@@ -2,8 +2,8 @@
 :root {
     --bg-color: #f8f9fa;
     --text-color: #212529;
-    --primary-color: #6d28d9; /* Un violeta moderno */
-    --secondary-color: #e9d5ff; /* Un lavanda muy suave */
+    --primary-color: #6d28d9;
+    --secondary-color: #e9d5ff;
     --card-bg: #ffffff;
     --font-title: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -24,12 +24,6 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.7;
-}
-
-/* --- CONTENIDO PRINCIPAL (CAPA BASE) --- */
-main {
-    position: relative;
-    z-index: 1;
 }
 
 .container {
@@ -58,12 +52,15 @@ section {
     padding: 80px 0;
 }
 
-/* --- BOTONES FLOTANTES (CAPA SUPERIOR) --- */
-.lang-switcher {
+/* --- BOTONES FLOTANTES (SOLUCIÓN DEFINITIVA DE CAPAS) --- */
+.lang-switcher, .whatsapp-flotante {
     position: fixed;
+    z-index: 9999; /* Un z-index muy alto para estar por encima de todo */
+}
+
+.lang-switcher {
     top: 20px;
     right: 20px;
-    z-index: 1001; /* El más alto para que nada lo tape */
 }
 
 #lang-toggle {
@@ -89,7 +86,6 @@ section {
 }
 
 .whatsapp-flotante {
-    position: fixed;
     bottom: 25px;
     right: 25px;
     left: auto;
@@ -98,7 +94,6 @@ section {
     border-radius: 50px;
     text-align: center;
     font-size: 14px;
-    z-index: 1000; /* Un poco menos que el de idioma, pero aún alto */
     display: flex;
     align-items: center;
     padding: 12px;
@@ -141,11 +136,11 @@ section {
 }
 
 /* --- SECCIONES ESPECÍFICAS --- */
-
-/* Hero */
 #hero {
     text-align: center;
     padding: 120px 0;
+    position: relative; /* Necesario para el z-index */
+    z-index: 1; /* Mantiene esta sección en la capa base */
 }
 #hero p {
     font-size: 1.2rem;
@@ -159,7 +154,6 @@ section {
     font-size: 0.9rem;
 }
 
-/* Sobre Mí */
 .about-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -178,7 +172,6 @@ section {
     text-align: left;
 }
 
-/* Para Ti */
 #para-ti {
     background-color: var(--secondary-color);
 }
@@ -204,7 +197,6 @@ section {
     font-size: 1.2rem;
 }
 
-/* Cómo Empezamos */
 .steps-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -220,7 +212,6 @@ section {
     margin-bottom: 0.5rem;
 }
 
-/* Testimonios (Carrusel) */
 #testimonios .swiper {
     width: 100%;
     padding-top: 20px;
@@ -269,7 +260,6 @@ section {
     align-self: flex-end;
 }
 
-/* CTA Final */
 #cta-final {
     background-color: var(--text-color);
     color: var(--bg-color);
@@ -282,7 +272,6 @@ section {
     margin: 0 auto 2rem auto;
 }
 
-/* Footer */
 footer {
     padding: 40px 0;
     text-align: center;
@@ -298,7 +287,6 @@ footer .copy {
     font-size: 0.8rem;
 }
 
-/* --- ANIMACIONES Y RESPONSIVE --- */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
