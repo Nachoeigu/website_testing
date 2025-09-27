@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const langToggle = document.getElementById('lang-toggle');
         const translatableElements = document.querySelectorAll('[data-lang-es], [data-lang-en]');
         
-        // --- INYECCIÓN 1: Seleccionamos el link de WhatsApp ---
         const whatsappLink = document.getElementById('whatsapp-link');
         const baseWhatsappHref = whatsappLink ? whatsappLink.getAttribute('href') : null;
 
@@ -30,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let currentLang = 'es'; // idioma por defecto
 
             function switchLanguage(lang) {
-                // Tu código original para cambiar textos (funciona perfecto)
                 translatableElements.forEach(el => {
                     if (el.id === 'lang-toggle') return;
                     const text = el.getAttribute(`data-lang-${lang}`);
@@ -39,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
 
-                // --- INYECCIÓN 2: Añadimos la lógica para actualizar el link de WhatsApp ---
                 if (whatsappLink && baseWhatsappHref) {
                     const rawMessage = whatsappLink.getAttribute(`data-whatsapp-${lang}`);
                     if (rawMessage) {
@@ -48,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
                 
-                // Tu código original para actualizar el botón y el HTML (funciona perfecto)
                 const toggleText = langToggle.getAttribute(`data-lang-${lang}`);
                 if (toggleText !== null) {
                     langToggle.innerHTML = toggleText;
@@ -64,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function() {
             langToggle.addEventListener('click', onToggle);
             langToggle.addEventListener('touchstart', onToggle, { passive: false });
 
-            // Tu inicialización original (funciona perfecto)
             switchLanguage(currentLang);
         }
     } catch (error) {
@@ -87,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }
-    } catch (error)
+    } catch (error) { // <-- ESTA LLAVE DE APERTURA FALTABA
         console.error("No se pudo inicializar el carrusel Swiper:", error);
-    }
+    } // <-- ESTA LLAVE DE CIERRE FALTABA
 });
